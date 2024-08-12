@@ -1,9 +1,9 @@
 import React from 'react'
 
-const cartTab = () => {
+const CartTab = () => {
   return (
     <div>cartTab</div>
   )
 }
 
-export default cartTab
+export default CartTab
