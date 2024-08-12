@@ -1,16 +1,24 @@
+import './App.css';
+import Layout from './layout/layout';
+import Home from 'pages/home';
+import Detail from 'pages/detail';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='/:slug' element={<Detail />} />
+          
+          </Route>
+      </Routes>
+    </BrowserRouter>
+
   );
 };
