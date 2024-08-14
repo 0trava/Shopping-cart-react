@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import iconCart from '../assets/images/iconCart.png'
+import iconCart from '../assets/images/iconCart.png';
+import { useSelector } from 'react-redux';
 
 const ProductCart = (data) => {
     const {id, name, price, image, slug} = data.data;
-    console.log(id);
+    const carts = useSelector(store => store.cart.items);
+    console.log(carts);
+    // console.log(id);
 
 
   return (
