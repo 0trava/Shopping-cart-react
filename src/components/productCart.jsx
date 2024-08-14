@@ -4,6 +4,7 @@ import iconCart from '../assets/images/iconCart.png'
 
 const ProductCart = (data) => {
     const {id, name, price, image, slug} = data.data;
+    console.log(id);
 
 
   return (
