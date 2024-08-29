@@ -2,11 +2,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { products } from 'products';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from 'stores/cart';
 
 const Detail = () => {
   const { slug } = useParams();
   const [detail, setDetail] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     const findDetail = products.filter(product => product.slug === slug);
@@ -27,6 +31,16 @@ const Detail = () => {
   const hadlePlusQuantity = () => {
     setQuantity(quantity + 1);
   }
+
+
+const hadleAddToCart = () => {
+  dispatch(addToCart({
+    productId: detail.id,
+    quantity: quantity
+  }))
+}
+
+
   return (
     <div>
       <h2 className="text-3xl text-center">PRODUCT DETAIL</h2>
@@ -49,7 +63,7 @@ const Detail = () => {
                 +
               </button>
             </div>
-            <button className="bg-gray-900 text-white px-7 py-3 rounded-xl shadow-2xl">
+            <button className="bg-gray-900 text-white px-7 py-3 rounded-xl shadow-2xl" onClick={hadleAddToCart}>
               Add To Cart
             </button>
           </div>
